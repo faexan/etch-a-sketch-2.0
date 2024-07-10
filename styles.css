@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(50, 50, 65);
+    user-select: none;
+}
+
+.playground {
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    display: grid;
+}
+
+
+.circle-g {
+    border-radius: 50%;
+}
+
+.triangle-g {
+    width: 0;
+	height: 0;
+}
+
