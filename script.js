@@ -13,14 +13,14 @@ let color = "brown";
 const layoutBtns = document.querySelectorAll(".layout-btn");
 layoutBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-        if(e.target.id === "default-g") {
+        if (e.target.id === "default-g") {
             createGrid(gridSize.value, "default-g")
         } else if (e.target.id == "circle-g") {
             createGrid(gridSize.value, "circle-g")
         } else if (e.target.id == "triangle-g") {
             createGrid(gridSize.value, "triangle-g")
         }
-    } )
+    })
 })
 
 
@@ -45,28 +45,50 @@ layoutBtns.forEach((btn) => {
 
 
 
-function colorSelection() {
-    
-}
-
 
 function colorChange(gridDivs) {
     let mouseEv = false;
-    gridDivs.forEach((grid)=> {
+    let colorHold = "black";
+    const blackBtn = document.querySelector(".blackColorBtn");
+    const randomBtn = document.querySelector(".randomColorBtn");
+    const erasor = document.querySelector(".erasorBtn");
+    const reset = document.querySelector(".resetBtn");
+    blackBtn.addEventListener("click", (e) => {
+        colorHold = "black";
+    })
+    randomBtn.addEventListener("click", () => {
+        colorHold = "random";
+    })
+    erasor.addEventListener("click", () => {
+        colorHold = "white";
+    })
+    gridDivs.forEach((grid) => {
         grid.addEventListener("mousedown", (e) => {
-        e.target.style.backgroundColor = color;
-        mouseEv = true;
-    });
-    grid.addEventListener("mouseover", (e) => {
-        if (mouseEv == true) {
-            e.target.style.backgroundColor = color;
-        }
-    });
-    grid.addEventListener("mouseup", (e) => {
-        mouseEv = false;
+            mouseEv = true;
+            if (colorHold == "black") {
+                e.target.style.backgroundColor = "black";
+            } else if (colorHold == "random") {
+                e.target.style.backgroundColor = "yellow";
+            } else if (colorHold == "white") {
+                e.target.style.backgroundColor = "white";
+            }
+        });
+        grid.addEventListener("mouseover", (e) => {
+            if (mouseEv == true) {
+                if (colorHold == "black") {
+                    e.target.style.backgroundColor = "black";
+                } else if (colorHold == "random") {
+                    e.target.style.backgroundColor = "yellow";
+                } else if (colorHold == "white") {
+                    e.target.style.backgroundColor = "white";
+                }
+            }
+        });
+        grid.addEventListener("mouseup", (e) => {
+            mouseEv = false;
+        })
     })
-    })
-    
+
 
 }
 
@@ -80,7 +102,7 @@ function createGrid(size, shape) {
             const gridDiv = document.createElement("div");
             gridDiv.classList.add("grid-div");
             playground.appendChild(gridDiv);
-            if(shape == "default-g") {
+            if (shape == "default-g") {
                 gridDiv.classList.remove("triangle-g")
                 gridDiv.classList.remove("circle-g")
             } else if (shape == "circle-g") {
@@ -91,9 +113,9 @@ function createGrid(size, shape) {
                 gridDiv.classList.remove("circle-g")
                 gridDiv.classList.remove("default-g")
                 gridDiv.classList.add("triangle-g")
-                gridDiv.style.borderLeft = 600/(gridSize.value*2) + "px solid white";
-                gridDiv.style.borderRight = 600/(gridSize.value*2) + "px solid white";
-                gridDiv.style.borderTop = 600/gridSize.value + "px solid transparent" ;
+                gridDiv.style.borderLeft = 600 / (gridSize.value * 2) + "px solid white";
+                gridDiv.style.borderRight = 600 / (gridSize.value * 2) + "px solid white";
+                gridDiv.style.borderTop = 600 / gridSize.value + "px solid transparent";
             }
         }
     }
@@ -106,5 +128,5 @@ function createGrid(size, shape) {
 
 function SizeDisplay(size) {
     const gridSizeDisplay = document.querySelector(".gridSizeDisplay");
-    gridSizeDisplay.innerHTML = size + " X " + size; 
+    gridSizeDisplay.innerHTML = size + " X " + size;
 }
