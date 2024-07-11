@@ -8,7 +8,6 @@ gridSize.addEventListener("click", (e) => {
     createGrid(gridSize.value);
 })
 createGrid(16);
-let color = "brown";
 
 const layoutBtns = document.querySelectorAll(".layout-btn");
 layoutBtns.forEach((btn) => {
@@ -22,28 +21,6 @@ layoutBtns.forEach((btn) => {
         }
     })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function colorChange(gridDivs) {
@@ -78,7 +55,7 @@ function colorChange(gridDivs) {
                 if (colorHold == "black") {
                     e.target.style.backgroundColor = "black";
                 } else if (colorHold == "random") {
-                    e.target.style.backgroundColor = "yellow";
+                    e.target.style.backgroundColor = randomColor();
                 } else if (colorHold == "white") {
                     e.target.style.backgroundColor = "white";
                 }
@@ -129,4 +106,8 @@ function createGrid(size, shape) {
 function SizeDisplay(size) {
     const gridSizeDisplay = document.querySelector(".gridSizeDisplay");
     gridSizeDisplay.innerHTML = size + " X " + size;
+}
+
+function randomColor() {
+    return "rgb(" + (Math.floor(Math.random()*255)) + "," + (Math.floor(Math.random()*255)) + "," + (Math.floor(Math.random()*255)) + ")"; 
 }
