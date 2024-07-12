@@ -4,30 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Etch-a-Sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Etch A Sketch|Play with colors</title>
 </head>
 <body>
+    <div class="heading">
+        <h1 class="header">Etch A Sketch</h1>
+    </div>
     <div class="container">
         <div class="controls">
+            <div class="controls1">
             <div class="layoutControls">
-            <input type="button" value="default" class="controls-btns layout-btn" id="default-g" >
-            <input type="button" value="circle" class="controls-btns layout-btn" id="circle-g">
-            <input type="button" value="triangle" class="controls-btns layout-btn" id="triangle-g">
+                <h2 class="layoutHead">Choose Layout</h2>
+            <input type="button" value="default" class="controls-btns btn layout-btn" id="default-g" >
+            <input type="button" value="circle" class="controls-btns btn layout-btn" id="circle-g">
+            <input type="button" value="triangle" class="controls-btns btn layout-btn" id="triangle-g">
             </div>
             <div class="gridSizeControls">
+                <h2 class="gridSizehead">Select Grid Size</h2>
             <label class="gridSizeDisplay" for="gridSize">16 X 16</label>
             <input type="range" name="gridSize" id="gridSize" min="10" max="100" value="16"/>
         </div>
-        <div class="ColorContorls">
-            <input type="button" value="Black" class="colorControl blackColorBtn">
-            <input type="button" value="Random" class="colorControl randomColorBtn">
-            <input type="button" value="Erasor" class="colorControl erasorBtn">
-            <input type="button" value="Reset" class="colorControl resetBtn">
+        </div>
+        <div class="colorControls">
+            <h2 class="colorsHead">Choose Color</h2>
+            <input type="button" value="Black" class="colorControl btn blackColorBtn">
+            <input type="button" value="Random" class="colorControl btn randomColorBtn">
+            <input type="button" value="Erasor" class="colorControl btn erasorBtn">
+            <h2 class="cCHead">Custom Color</h2>
             <input type="color" name="customColor" id="customColor" class="customColorBtn">
         </div>
-        <div class="undoControls">
-            <input type="button" value="Undo" class="undoRedoControl undo">
+        <div class="resetControls">
+            <input type="button" value="Reset" class="colorControl btn resetBtn">
         </div>
+        <!-- <div class="undoControls">
+            <input type="button" value="Undo" class="undoRedoControl undo">
+        </div> -->
         </div>
     </div>
     <script src="./script.js"></script>

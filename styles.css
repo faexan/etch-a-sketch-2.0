@@ -1,15 +1,25 @@
 body {
-    background-color: rgb(50, 50, 65);
+    background-color: rgb(136, 136, 143);
     user-select: none;
+    font-family: "Roboto", sans-serif;
 }
 
 .playground {
-    width: 600px;
-    height: 600px;
+    width: 650px;
+    height: 650px;
     background-color: white;
     display: grid;
 }
 
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.resetControls {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
 
 .circle-g {
     border-radius: 50%;
@@ -20,3 +30,25 @@ body {
 	height: 0;
 }
 
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+}
+
+.layoutControls, .gridSizeControls, .colorControls, .resetControls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn{
+    width: 35%;
+    height: 40px;
+    margin: 7px 0;
+}
