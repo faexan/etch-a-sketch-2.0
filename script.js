@@ -23,41 +23,64 @@ layoutBtns.forEach((btn) => {
 })
 
 
-function colorChange(gridDivs) {
+function colorChange(gridDivs, size) {
+    let addId = []; 
+    let colorRecord = [];
     let mouseEv = false;
     let colorHold = "black";
     const blackBtn = document.querySelector(".blackColorBtn");
     const randomBtn = document.querySelector(".randomColorBtn");
     const erasor = document.querySelector(".erasorBtn");
     const reset = document.querySelector(".resetBtn");
-    blackBtn.addEventListener("click", (e) => {
+    const customColorBtn = document.querySelector(".customColorBtn");
+    blackBtn.addEventListener("click", () => {
         colorHold = "black";
     })
     randomBtn.addEventListener("click", () => {
         colorHold = "random";
     })
     erasor.addEventListener("click", () => {
-        colorHold = "white";
+        colorHold = "erasor";
+    })
+    customColorBtn.addEventListener("click", ()=> {
+        colorHold = "custom";
+    })
+    reset.addEventListener("click", ()=> {
+        createGrid(size);
+        addId = [];
     })
     gridDivs.forEach((grid) => {
         grid.addEventListener("mousedown", (e) => {
             mouseEv = true;
             if (colorHold == "black") {
                 e.target.style.backgroundColor = "black";
+                addId.push(e.target.id);
+                colorRecord.push("black")
             } else if (colorHold == "random") {
-                e.target.style.backgroundColor = "yellow";
-            } else if (colorHold == "white") {
+                let rC = randomColor();
+                e.target.style.backgroundColor = rC;
+                addId.push(e.target.id);
+                colorRecord.push(rC);
+            } else if (colorHold == "erasor") {
                 e.target.style.backgroundColor = "white";
+            } else if (colorHold == "custom") {
+                e.target.style.backgroundColor = customColorBtn.value;
+                addId.push((e.target.id));
             }
         });
         grid.addEventListener("mouseover", (e) => {
             if (mouseEv == true) {
                 if (colorHold == "black") {
                     e.target.style.backgroundColor = "black";
+                    addId.push(e.target.id);
                 } else if (colorHold == "random") {
                     e.target.style.backgroundColor = randomColor();
-                } else if (colorHold == "white") {
+                    addId.push(e.target.id);
+                } else if (colorHold == "erasor") {
                     e.target.style.backgroundColor = "white";
+                } else if (colorHold == "custom") {
+                    e.target.style.backgroundColor = customColorBtn.value;
+                    addId.push(e.target.id);
                 }
             }
         });
@@ -65,8 +88,8 @@ function colorChange(gridDivs) {
             mouseEv = false;
         })
     })
-
-
+    undoRedo(addId);
+   
 }
 
 function createGrid(size, shape) {
@@ -78,6 +101,7 @@ function createGrid(size, shape) {
         for (let j = 0; j < size; j++) {
             const gridDiv = document.createElement("div");
             gridDiv.classList.add("grid-div");
+            gridDiv.id = "0" + i + "0" + j; 
             playground.appendChild(gridDiv);
             if (shape == "default-g") {
                 gridDiv.classList.remove("triangle-g")
@@ -97,7 +121,7 @@ function createGrid(size, shape) {
         }
     }
     const gridDivs1 = document.querySelectorAll(".grid-div");
-    colorChange(gridDivs1);
+    colorChange(gridDivs1, size);
     SizeDisplay(size);
     playground.style.gridTemplateColumns = "repeat(" + size + ", 1fr)";
     playground.style.gridTemplateRows = "repeat(" + size + ", 1fr)";
@@ -110,4 +134,14 @@ function SizeDisplay(size) {
 
 function randomColor() {
     return "rgb(" + (Math.floor(Math.random()*255)) + "," + (Math.floor(Math.random()*255)) + "," + (Math.floor(Math.random()*255)) + ")"; 
+}
+
+function undoRedo(record) {
+    let undoId;
+    const undo = document.querySelector(".undo");
+    undo.addEventListener("click", ()=> {
+        undoId = record.pop();
+        const div = document.getElementById(undoId);
+        if(div != null) {div.style.backgroundColor = "white";}
+    })
 }
