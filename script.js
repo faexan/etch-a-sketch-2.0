@@ -1,4 +1,4 @@
-const container = document.querySelector(".container");
+const container = document.querySelector(".board");
 const playground = document.createElement("div");
 playground.classList.add("playground");
 container.appendChild(playground);
@@ -48,6 +48,12 @@ function colorChange(gridDivs, size) {
     reset.addEventListener("click", ()=> {
         createGrid(size);
         addId = [];
+    })
+    reset.addEventListener("mousedown", (e)=> {
+        e.target.style.backgroundColor = "red";
+    })
+    reset.addEventListener("mouseup", (e)=> {
+        e.target.style.backgroundColor = "white";
     })
     gridDivs.forEach((grid) => {
         grid.addEventListener("mousedown", (e) => {

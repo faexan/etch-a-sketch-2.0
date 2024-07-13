@@ -7,11 +7,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+HR:wght@100..400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tangsa:wght@400..700&family=Playwrite+HR:wght@100..400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Etch A Sketch|Play with colors</title>
 </head>
 <body>
     <div class="heading">
         <h1 class="header">Etch A Sketch</h1>
+    </div>
+    <div class="undoControls">
+        <span class="material-symbols-outlined undoRedoControl undo">
+            undo
+            </span><span class="undoText">Undo</span>
     </div>
     <div class="container">
         <div class="controls">
@@ -28,6 +37,7 @@
             <input type="range" name="gridSize" id="gridSize" min="10" max="100" value="16"/>
         </div>
         </div>
+        <div class="board"></div>
         <div class="colorControls">
             <h2 class="colorsHead">Choose Color</h2>
             <input type="button" value="Black" class="colorControl btn blackColorBtn">
@@ -39,11 +49,9 @@
         <div class="resetControls">
             <input type="button" value="Reset" class="colorControl btn resetBtn">
         </div>
-        <!-- <div class="undoControls">
-            <input type="button" value="Undo" class="undoRedoControl undo">
-        </div> -->
         </div>
     </div>
+    <footer class = "footer">Crafted with ❤️ by &nbsp;<a href = "https://github.com/faexan" target="_blank"><span class = "fa fa-github" aria-hidden="true"></span>/faexan</span></a></footer>
     <script src="./script.js"></script>
 </body>
 </html>
